@@ -23,17 +23,7 @@ class App extends Component {
 		};
 		firebase.initializeApp(config);
 	}
-	state = {
-		open: false
-	};
 
-	handleOpen = () => {
-		this.setState({ open: true });
-	};
-
-	handleClose = () => {
-		this.setState({ open: false });
-	};
 	render() {
 		const actions = [
 			<FlatButton label="Cancel" primary={true} onClick={this.handleClose} />,
@@ -70,17 +60,9 @@ class App extends Component {
 						<br />
 						<br />
 						<p>Have a question?</p>
-						<RaisedButton label="Talk To Us" onClick={this.handleOpen} />
-						<Dialog
-							title="Dialog With Actions"
-							actions={actions}
-							modal={false}
-							open={this.state.open}
-							onRequestClose={this.handleClose}
-						>
-							The actions in this window were passed in as an array of React
-							objects.
-						</Dialog>
+						<a href="mailto:vishalpatel2890@gmail.com">
+							<RaisedButton label="Talk To Us" />
+						</a>
 					</Col>
 					<Col span={6}>
 						<Carousel autoplay effect="fade">
