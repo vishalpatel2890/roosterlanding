@@ -48,14 +48,14 @@ class App extends Component {
 		return (
 			<div>
 				<Row gutter={0}>
-					<Col span={6}>
-						<img src={require("./logo.png")} width="100%" height="100%" />
+					<Col style={{ textAlign: "center" }} span={6}>
+						<img src={require("./logo.png")} width="90%" height="90%" />
 						<p>Phone To Table</p>
 					</Col>
 					<Col span={12} style={{ textAlign: "center" }}>
 						<Carousel autoplay effect="fade">
 							<div>Get connected with your favorite local producers</div>
-							<div>Discover whats happening in local food scence</div>
+							<div>Discover whats happening in your local food scence</div>
 							<div>Be the first to get the freshest and bestest foods</div>
 						</Carousel>
 						<br />
