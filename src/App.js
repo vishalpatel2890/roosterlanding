@@ -6,6 +6,8 @@ import FlatButton from "material-ui/FlatButton";
 import RaisedButton from "material-ui/RaisedButton";
 import Button from "antd/lib/button";
 import Carousel from "antd/lib/carousel";
+import Row from "antd/lib/row";
+import Col from "antd/lib/col";
 
 import "./App.css";
 
@@ -44,13 +46,13 @@ class App extends Component {
 		];
 
 		return (
-			<div className="App">
-				<div className="container">
-					<div className="outer-left">
-						<img src={require("./logo.png")} />
+			<div>
+				<Row gutter={0}>
+					<Col span={6}>
+						<img src={require("./logo.png")} width="100%" height="100%" />
 						<p>Phone To Table</p>
-					</div>
-					<div className="center-column">
+					</Col>
+					<Col span={12} style={{ textAlign: "center" }}>
 						<Carousel autoplay effect="fade">
 							<div>Get connected with your favorite local producers</div>
 							<div>Discover whats happening in local food scence</div>
@@ -60,7 +62,7 @@ class App extends Component {
 						<br />
 						<TextField
 							hintText="Email"
-							style={{ fontSize: 30, width: 500 }}
+							style={{ fontSize: 30, width: "80%" }}
 							underlineStyle={{ borderColor: "#B90C5C" }}
 							underlineFocusStyle={{ borderColor: "#000000" }}
 						/>
@@ -79,26 +81,26 @@ class App extends Component {
 							The actions in this window were passed in as an array of React
 							objects.
 						</Dialog>
-					</div>
-					<div className="outer-right">
+					</Col>
+					<Col span={6}>
 						<Carousel autoplay effect="fade">
 							<div>
 								<img
 									src={require("./assets/iphone-rooster.png")}
-									width="110%"
-									height="110%"
+									width="100%"
+									height="100%"
 								/>
 							</div>
 							<div>
 								<img
 									src={require("./assets/iphone-rooster.png")}
-									width="110%"
-									height="110%"
+									width="100%"
+									height="100%"
 								/>
 							</div>
 						</Carousel>
-					</div>
-				</div>
+					</Col>
+				</Row>
 				<div className="rooster-footer">
 					<p>so you don't have to be up at the crack of dawn</p>
 				</div>
