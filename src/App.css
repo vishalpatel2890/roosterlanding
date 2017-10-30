@@ -1,0 +1,67 @@
+@import "~antd/dist/antd.css";
+
+.App {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+}
+
+body {
+	background-image: url("./assets/greyzz.png");
+}
+
+.App-logo {
+	animation: App-logo-spin infinite 20s linear;
+	height: 80px;
+}
+
+.rooster-footer {
+	background-color: #b90c5c;
+	height: 10%;
+	margin: 20;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	color: white;
+}
+
+.App-title {
+	font-size: 1.5em;
+}
+
+.App-intro {
+	font-size: large;
+}
+
+@keyframes App-logo-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.outer-left {
+	flex: 1;
+	padding: 1rem;
+}
+
+.center-column {
+	flex: 2;
+	text-align: center;
+	overflow-y: hidden;
+}
+
+.outer-right {
+	flex: 1;
+	padding-right: 6rem;
+	overflow-y: hidden;
+}
