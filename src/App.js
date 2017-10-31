@@ -1,15 +1,21 @@
 import React, { Component } from "react";
 import firebase from "firebase";
 import TextField from "material-ui/TextField";
-import Dialog from "material-ui/Dialog";
 import FlatButton from "material-ui/FlatButton";
 import RaisedButton from "material-ui/RaisedButton";
-import Button from "antd/lib/button";
 import Carousel from "antd/lib/carousel";
 import Row from "antd/lib/row";
 import Col from "antd/lib/col";
+import Responsive from "react-responsive";
 
 import "./App.css";
+
+const Default = ({ children }) => (
+	<Responsive minWidth={500} children={children} />
+);
+const Mobile = ({ children }) => (
+	<Responsive maxWidth={500} children={children} />
+);
 
 class App extends Component {
 	componentWillMount() {
@@ -25,31 +31,74 @@ class App extends Component {
 	}
 
 	render() {
-		const actions = [
-			<FlatButton label="Cancel" primary={true} onClick={this.handleClose} />,
-			<FlatButton
-				label="Submit"
-				primary={true}
-				keyboardFocused={true}
-				onClick={this.handleClose}
-			/>
-		];
-
 		return (
 			<div>
-				<Row gutter={0}>
-					<Col style={{ textAlign: "center" }} span={6}>
-						<img src={require("./logo.png")} width="90%" height="90%" />
+				<Default>
+					<div>
+						<Row gutter={0}>
+							<Col style={{ textAlign: "center" }} span={6}>
+								<img src={require("./logo.png")} width="90%" height="90%" />
+								<p>Phone To Table</p>
+							</Col>
+							<Col span={12} style={{ textAlign: "center" }}>
+								<Carousel autoplay effect="fade">
+									<div>Get connected with your favorite local producers</div>
+									<div>Discover whats happening in your local food scence</div>
+									<div>Be the first to get the freshest and bestest foods</div>
+								</Carousel>
+								<br />
+								<br />
+								<TextField
+									hintText="Email"
+									style={{ fontSize: 30, width: "80%" }}
+									underlineStyle={{ borderColor: "#B90C5C" }}
+									underlineFocusStyle={{ borderColor: "#000000" }}
+								/>
+								<br />
+								<br />
+								<br />
+								<p>Have a question?</p>
+								<a href="mailto:vishalpatel2890@gmail.com">
+									<RaisedButton label="Talk To Us" />
+								</a>
+							</Col>
+							<Col span={6}>
+								<Carousel autoplay effect="fade">
+									<div>
+										<img
+											src={require("./assets/iphone-rooster.png")}
+											width="100%"
+											height="100%"
+										/>
+									</div>
+									<div>
+										<img
+											src={require("./assets/iphone-rooster.png")}
+											width="100%"
+											height="100%"
+										/>
+									</div>
+								</Carousel>
+							</Col>
+						</Row>
+						<div className="rooster-footer">
+							<p>so you dont have to be up at the crack of dawn</p>
+						</div>
+					</div>
+				</Default>
+				<Mobile>
+					<Row gutter={0} style={{ textAlign: "center" }}>
+						<img src={require("./logo.png")} width="20%" height="20%" />
 						<p>Phone To Table</p>
-					</Col>
-					<Col span={12} style={{ textAlign: "center" }}>
+					</Row>
+					<Row gutter={0} style={{ textAlign: "center" }}>
 						<Carousel autoplay effect="fade">
 							<div>Get connected with your favorite local producers</div>
 							<div>Discover whats happening in your local food scence</div>
 							<div>Be the first to get the freshest and bestest foods</div>
 						</Carousel>
-						<br />
-						<br />
+					</Row>
+					<Row gutter={0} style={{ textAlign: "center" }}>
 						<TextField
 							hintText="Email"
 							style={{ fontSize: 30, width: "80%" }}
@@ -58,34 +107,19 @@ class App extends Component {
 						/>
 						<br />
 						<br />
-						<br />
 						<p>Have a question?</p>
 						<a href="mailto:vishalpatel2890@gmail.com">
 							<RaisedButton label="Talk To Us" />
 						</a>
-					</Col>
-					<Col span={6}>
-						<Carousel autoplay effect="fade">
-							<div>
-								<img
-									src={require("./assets/iphone-rooster.png")}
-									width="100%"
-									height="100%"
-								/>
-							</div>
-							<div>
-								<img
-									src={require("./assets/iphone-rooster.png")}
-									width="100%"
-									height="100%"
-								/>
-							</div>
-						</Carousel>
-					</Col>
-				</Row>
-				<div className="rooster-footer">
-					<p>so you don't have to be up at the crack of dawn</p>
-				</div>
+					</Row>
+					<Row gutter={0} style={{ textAlign: "center" }}>
+						<img
+							src={require("./assets/iphone-rooster.png")}
+							width="58%"
+							height="58%"
+						/>
+					</Row>
+				</Mobile>
 			</div>
 		);
 	}
