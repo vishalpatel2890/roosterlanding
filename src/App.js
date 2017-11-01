@@ -18,6 +18,7 @@ const Mobile = ({ children }) => (
 );
 
 class App extends Component {
+	state = { textFieldValue: "" };
 	componentWillMount() {
 		const config = {
 			apiKey: "AIzaSyDkx4ThtwQUKkOWWx0lQeAwR3gGnyCVdu4",
@@ -29,6 +30,25 @@ class App extends Component {
 		};
 		firebase.initializeApp(config);
 	}
+
+	onSubmit(e) {
+		e.preventDefault();
+		const email = this.state.textFieldValue;
+		console.log(email);
+		firebase
+			.database()
+			.ref("/landingpage")
+			.push({ email })
+			.then(() => {
+				console.log("done");
+			});
+	}
+
+	handleTextFieldChange = e => {
+		this.setState({
+			textFieldValue: e.target.value
+		});
+	};
 
 	render() {
 		return (
@@ -48,12 +68,21 @@ class App extends Component {
 								</Carousel>
 								<br />
 								<br />
-								<TextField
-									hintText="Email"
-									style={{ fontSize: 30, width: "80%" }}
-									underlineStyle={{ borderColor: "#B90C5C" }}
-									underlineFocusStyle={{ borderColor: "#000000" }}
-								/>
+								<form>
+									<TextField
+										hintText="Email"
+										style={{ fontSize: 30, width: "80%" }}
+										underlineStyle={{ borderColor: "#B90C5C" }}
+										underlineFocusStyle={{ borderColor: "#000000" }}
+										value={this.state.textFieldValue}
+										onChange={this.handleTextFieldChange}
+									/>
+									<RaisedButton
+										type="submit"
+										label="Sign Up"
+										onClick={e => this.onSubmit(e)}
+									/>
+								</form>
 								<br />
 								<br />
 								<br />
