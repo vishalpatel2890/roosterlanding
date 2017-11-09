@@ -15,10 +15,10 @@ import { TextValidator } from "react-material-ui-form-validator";
 import "./App.css";
 
 const Default = ({ children }) => (
-	<Responsive minWidth={500} children={children} />
+	<Responsive minWidth={900} children={children} />
 );
 const Mobile = ({ children }) => (
-	<Responsive maxWidth={500} children={children} />
+	<Responsive maxWidth={900} children={children} />
 );
 
 const textFieldFirstNameValue = "textFieldFirstNameValue";
@@ -288,7 +288,10 @@ class App extends Component {
 							<div className="element">
 								<Row style={{ textAlign: "center" }}>
 									<Col>
-										<img src={require("./assets/homephone.png")} />
+										<img
+											src={require("./assets/homephone.png")}
+											style={{ width: imgSize + "%", height: imgSize + "%" }}
+										/>
 									</Col>
 									<Col>
 										<div
