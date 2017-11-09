@@ -131,3 +131,50 @@ h1 {
 	font-size: 60px;
 	color: #ffffff;
 }
+
+.left-column-mobile {
+	background-color: white;
+	height: 100%;
+	position: absolute;
+	width: 30%;
+	padding: 1% 5% 5% 4%;
+	top: 0;
+	left: 0;
+	white-space: nowrap;
+	overflow: visible;
+}
+.left-slant-mobile {
+	height: 100%;
+	width: 45%;
+	padding: 20% 20% 0% 5%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+	background: #fff;
+	color: #0495ff;
+	-webkit-transform: skewx(-10deg);
+	transform: skewx(-10deg);
+	-webkit-box-shadow: 0 0 1px white;
+	-o-box-shadow: none;
+	-webkit-transition-duration: 2s;
+	transition-duration: 2s;
+	-webkit-transition-property: all;
+	transition-property: all;
+	overflow-x: visible;
+}
+.sign-up-mobile {
+	max-width: 50%;
+	position: absolute;
+	top: 30%;
+	left: 40%;
+}
+
+.header-text-mobile {
+	font-family: "PT Sans", sans-serif;
+	font-size: 30px;
+	background-color: black;
+	color: #ffffff;
+	padding-left: 20px;
+	padding-right: 20px;
+}
