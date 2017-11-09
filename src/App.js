@@ -368,8 +368,8 @@ class App extends Component {
 											<TextField
 												hintText="First Name"
 												style={{
-													fontSize: 30,
-													width: "48.5%",
+													fontSize: 20,
+													width: "48%",
 													padding: "10px 12px",
 													border: "1px solid #ced4da",
 													background: "#ffffff",
@@ -388,8 +388,8 @@ class App extends Component {
 											<TextField
 												hintText="Last Name"
 												style={{
-													fontSize: 30,
-													width: "48.5%",
+													fontSize: 20,
+													width: "48%",
 													padding: "10px 12px",
 													border: "1px solid #ced4da",
 													background: "#ffffff",
@@ -406,7 +406,7 @@ class App extends Component {
 												hintText="Email"
 												name="email"
 												style={{
-													fontSize: 30,
+													fontSize: 20,
 													width: "100%",
 													padding: "10px 12px",
 													border: "1px solid #ced4da",
@@ -429,7 +429,7 @@ class App extends Component {
 												hintText="Phone Number"
 												name="phone"
 												style={{
-													fontSize: 30,
+													fontSize: 20,
 													width: "100%",
 													padding: "10px 12px",
 													border: "1px solid #ced4da",
