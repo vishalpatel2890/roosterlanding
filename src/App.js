@@ -90,7 +90,9 @@ class App extends Component {
 		const { SCREEN_HEIGHT, SCREEN_WIDTH } = this.state;
 		const imgSize = (SCREEN_HEIGHT / 760 * 100).toFixed(2);
 		const homeimgSize = (0.225 * (SCREEN_HEIGHT / 722 * 100)).toFixed(2);
-
+		console.log(imgSize);
+		console.log(homeimgSize);
+		console.log(mobilehomeimgSize);
 		return (
 			<div>
 				<Default>
@@ -290,7 +292,10 @@ class App extends Component {
 									<Col>
 										<img
 											src={require("./assets/homephone.png")}
-											style={{ width: imgSize + "%", height: imgSize + "%" }}
+											style={{
+												width: "50%",
+												height: "50%"
+											}}
 										/>
 									</Col>
 									<Col>
