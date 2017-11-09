@@ -1,4 +1,5 @@
 @import "~antd/dist/antd.css";
+@import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
 
 .App {
 	text-align: center;
@@ -6,42 +7,20 @@
 	flex-direction: column;
 }
 
-body {
-	background-image: url("./assets/greyzz.png");
+.element {
+	height: 100vh;
+	padding-top: 30px;
+}
+
+.bottom-element {
+	height: 100vh;
+	padding-top: 30px;
+	padding-left: 10px;
 }
 
 .App-logo {
 	animation: App-logo-spin infinite 20s linear;
 	height: 80px;
-}
-
-.rooster-footer {
-	background-color: #b90c5c;
-	height: 10%;
-	margin: 20;
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	color: white;
-	text-align: center;
-}
-
-.App-title {
-	font-size: 1.5em;
-}
-
-.App-intro {
-	font-size: large;
-}
-
-@keyframes App-logo-spin {
-	from {
-		transform: rotate(0deg);
-	}
-	to {
-		transform: rotate(360deg);
-	}
 }
 
 .container {
@@ -65,4 +44,90 @@ body {
 	flex: 1;
 	padding-right: 6rem;
 	overflow-y: hidden;
+}
+
+.left-column {
+	background-color: white;
+	height: 100%;
+	position: absolute;
+	width: 25%;
+	padding: 1% 5% 5% 4%;
+	top: 0;
+	left: 0;
+	white-space: nowrap;
+	overflow: visible;
+}
+
+.wrap {
+	padding-top: 15%;
+	white-space: normal;
+	overflow: visible;
+}
+.wrap p {
+	font-size: 16px;
+	color: black;
+}
+.left-slant {
+	height: 100%;
+	width: 30%;
+	padding: 20% 20% 0% 5%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	box-sizing: border-box;
+	background: #fff;
+	color: #0495ff;
+	-webkit-transform: skewx(-10deg);
+	transform: skewx(-10deg);
+	-webkit-box-shadow: 0 0 1px white;
+	-o-box-shadow: none;
+	-webkit-transition-duration: 2s;
+	transition-duration: 2s;
+	-webkit-transition-property: all;
+	transition-property: all;
+	overflow-x: visible;
+}
+
+.header-text {
+	font-family: "PT Sans", sans-serif;
+	font-size: 70px;
+	background-color: black;
+	color: #ffffff;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+h1 {
+	-webkit-transform: skewx(0deg) !important;
+	transform: skewx(0deg) !important;
+	line-height: 1.15;
+}
+
+.phone {
+	max-width: 20%;
+	position: absolute;
+	bottom: 7%;
+	left: 28%;
+}
+
+.hand {
+	max-width: 20%;
+	position: absolute;
+	bottom: 0;
+	left: 34%;
+	font-size: 0;
+	line-height: 0;
+}
+
+.sign-up {
+	max-width: 40%;
+	position: absolute;
+	top: 30%;
+	left: 54%;
+}
+
+.sign-up h1 {
+	font-family: "PT Sans", sans-serif;
+	font-size: 60px;
+	color: #ffffff;
 }
