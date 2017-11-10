@@ -90,8 +90,17 @@
 
 .header-text {
 	font-family: "PT Sans", sans-serif;
-	font-size: 70px;
+	font-size: 50px;
 	background-color: black;
+	color: #ffffff;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.header-text-red {
+	font-family: "PT Sans", sans-serif;
+	font-size: 50px;
+	background-color: #cc055f;
 	color: #ffffff;
 	padding-left: 20px;
 	padding-right: 20px;
