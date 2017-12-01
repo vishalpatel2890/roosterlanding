@@ -115,9 +115,6 @@ class App extends Component {
 		const imgSize = (SCREEN_HEIGHT / 760 * 100).toFixed(2);
 		const homeimgSize = (0.225 * (SCREEN_WIDTH / 1600 * 100)).toFixed(2);
 		const hiresSize = imgSize / 2;
-		console.log(homeimgSize);
-		console.log(SCREEN_WIDTH);
-		console.log(SCREEN_WIDTH1);
 		return (
 			<div>
 				<Experiment name="myExperiment">
@@ -1142,11 +1139,14 @@ class App extends Component {
 												</span>
 											</h1>
 											<h1 style={{ lineHeight: 1.25}}>
-												<span className="header-text">farmers market experience</span>
+												<span className="header-text">farmers market</span>
+											</h1>
+											<h1 style={{ lineHeight: 1.25}}>
+												<span className="header-text">experience</span>
 											</h1>
 												<div className="wrap">
-												<ul className="list-main">
-																					<li>Discover the best local producers of meat, seafood, produce, wine, cheese and more
+												<ul className="list-main-mobile">
+											<li>Discover the best local producers of meat, seafood, produce, wine, cheese and more
 											</li>
 											<li>Choose a pick up time and location that works around your schedule
 											</li>
