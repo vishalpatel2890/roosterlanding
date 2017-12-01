@@ -17,10 +17,10 @@ import ReactGA from "react-ga";
 import "./App.css";
 
 const HiRes = ({ children }) => (
-	<Responsive minWidth={1800} children={children} />
+	<Responsive minWidth={1900} children={children} />
 );
 const Default = ({ children }) => (
-	<Responsive minWidth={750} maxWidth={1800} children={children} />
+	<Responsive minWidth={750} maxWidth={1900} children={children} />
 );
 const Mobile = ({ children }) => (
 	<Responsive maxWidth={750} children={children} />
@@ -34,6 +34,7 @@ const textFieldPhoneValue = "textFieldPhoneValue";
 ReactGA.initialize("UA-67701564-2");
 emitter.defineVariants("myExperiment", ["control", "variant"], [50, 50]);
 
+
 class App extends Component {
 	state = {
 		textFieldFirstNameValue: "",
@@ -42,6 +43,7 @@ class App extends Component {
 		textFieldPhoneValue: "",
 		SCREEN_HEIGHT: "",
 		SCREEN_WIDTH: "",
+		SCREEN_WIDTH1: "",
 		variantKey: ""
 	};
 	componentWillMount() {
@@ -54,37 +56,17 @@ class App extends Component {
 			messagingSenderId: "535291799070"
 		};
 		firebase.initializeApp(config);
+
 		this.updateDimensions();
-		emitter.addPlayListener((experimentName, variantName) => {
-			const variantKey = firebase
-				.database()
-				.ref()
-				.child("/landingpage/visits/")
-				.push().key;
-			this.setState({ variantKey });
-			firebase
-				.database()
-				.ref("/landingpage/visits/")
-				.push({ variantKey });
-			// what to do when experiment is displayed. E.g. log to Mixpanel or save to database (with redux-saga for instance)
-		});
+		// emitter.addPlayListener((experimentName, variantName) => {
+		// 	// what to do when experiment is displayed. E.g. log to Mixpanel or save to database (with redux-saga for instance)
+		// });
 		emitter.addWinListener((experimentName, variantName) => {
 			ReactGA.event({
 				category: "Landing Page",
 				action: "Form Submit",
 				label: variantName
 			});
-			if (variantName === "variant") {
-				firebase
-					.database()
-					.ref("/landingpage/A/")
-					.push({ [this.state.variantKey]: this.state.variantKey });
-			} else {
-				firebase
-					.database()
-					.ref("/landingpage/B/")
-					.push({ [this.state.variantKey]: this.state.variantKey });
-			}
 		});
 	}
 
@@ -95,7 +77,8 @@ class App extends Component {
 	updateDimensions = () => {
 		this.setState({
 			SCREEN_HEIGHT: document.documentElement.clientHeight,
-			SCREEN_WIDTH: document.documentElement.clientWidth
+			SCREEN_WIDTH: window.innerWidth,
+			SCREEN_WIDTH1: document.documentElement.clientWidth
 		});
 	};
 
@@ -128,11 +111,13 @@ class App extends Component {
 	};
 
 	render() {
-		const { SCREEN_HEIGHT, SCREEN_WIDTH } = this.state;
+		const { SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_WIDTH1 } = this.state;
 		const imgSize = (SCREEN_HEIGHT / 760 * 100).toFixed(2);
-		const homeimgSize = (0.225 * (SCREEN_WIDTH / 1418 * 100)).toFixed(2);
+		const homeimgSize = (0.225 * (SCREEN_WIDTH / 1600 * 100)).toFixed(2);
 		const hiresSize = imgSize / 2;
-
+		console.log(homeimgSize);
+		console.log(SCREEN_WIDTH);
+		console.log(SCREEN_WIDTH1);
 		return (
 			<div>
 				<Experiment name="myExperiment">
@@ -177,23 +162,28 @@ class App extends Component {
 									>
 										<div className="left-slant" />
 										<div className="left-column">
-											<h1>
-												<span className="header-text">Farmers markets </span>
-											</h1>
-											<h1>
-												<span className="header-text">in your pocket </span>
-											</h1>
+										<h1 style={{ lineHeight: 1.25 }}>
+											<span className="header-text">
+												An app to bring the
+											</span>
+										</h1>
+										<h1 style={{ lineHeight: 1.25}}>
+											<span className="header-text">farmers market from</span>
+										</h1>
+										<h1 style={{ lineHeight: 1.25}}>
+											<span className="header-text-red">phone to table</span>
+										</h1>
+
 											<div className="wrap">
-												<p>
-													Lorem ipsum dolor sit amet, consectetur adipiscing
-													elit. Sed ultricies ex urna, vel porttitor arcu
-													commodo id. Suspendisse eget felis congue, aliquet
-													velit ut, lacinia risus. Quisque ac nisl at nunc
-													fringilla hendrerit quis sed justo. Curabitur urna
-													eros, iaculis in lacinia quis, ultricies at nunc. Sed
-													ac malesuada eros. Suspendisse at metus malesuada,
-													varius lectus ac, semper massa.
-												</p>
+											<ul className="list-main">
+											<li>Discover the best local producers of meat, seafood, produce, wine, cheese and more
+												</li>
+												<li>Choose a pick up time and location that works around your schedule
+												</li>
+												<li>Preorder to avoid the rush and guarantee your favorite things are waiting for you</li>
+												<li>Connect to the awesome people who make your awesome food
+												</li>
+											</ul>
 											</div>
 										</div>
 
@@ -347,10 +337,6 @@ class App extends Component {
 										<Col>
 											<img
 												src={require("./assets/homephone.png")}
-												style={{
-													width: homeimgSize + "%",
-													height: homeimgSize + "%"
-												}}
 											/>
 										</Col>
 										<Col>
@@ -376,23 +362,27 @@ class App extends Component {
 									>
 										<div className="left-slant" />
 										<div className="left-column">
-											<h1>
-												<span className="header-text">Farmers markets </span>
-											</h1>
-											<h1>
-												<span className="header-text">in your pocket </span>
-											</h1>
+										<h1 style={{ lineHeight: 1.25 }}>
+											<span className="header-text">
+												An app to bring the
+											</span>
+										</h1>
+										<h1 style={{ lineHeight: 1.25}}>
+											<span className="header-text">farmers market from</span>
+										</h1>
+										<h1 style={{ lineHeight: 1.25}}>
+											<span className="header-text-red">phone to table</span>
+										</h1>
 											<div className="wrap">
-												<p>
-													Lorem ipsum dolor sit amet, consectetur adipiscing
-													elit. Sed ultricies ex urna, vel porttitor arcu
-													commodo id. Suspendisse eget felis congue, aliquet
-													velit ut, lacinia risus. Quisque ac nisl at nunc
-													fringilla hendrerit quis sed justo. Curabitur urna
-													eros, iaculis in lacinia quis, ultricies at nunc. Sed
-													ac malesuada eros. Suspendisse at metus malesuada,
-													varius lectus ac, semper massa.
-												</p>
+											<ul className="list-main">
+											<li>Discover the best local producers of meat, seafood, produce, wine, cheese and more
+												</li>
+												<li>Choose a pick up time and location that works around your schedule
+												</li>
+												<li>Preorder to avoid the rush and guarantee your favorite things are waiting for you</li>
+												<li>Connect to the awesome people who make your awesome food
+												</li>
+											</ul>
 											</div>
 										</div>
 
@@ -572,27 +562,27 @@ class App extends Component {
 										>
 											<div className="left-slant-mobile" />
 											<div className="left-column-mobile">
-												<h1>
-													<span className="header-text-mobile">
-														Farmers markets{" "}
-													</span>
-												</h1>
-												<h1>
-													<span className="header-text-mobile">
-														in your pocket{" "}
-													</span>
-												</h1>
-												<div className="wrap">
-													<p style={{ fontSize: 10 }}>
-														Lorem ipsum dolor sit amet, consectetur adipiscing
-														elit. Sed ultricies ex urna, vel porttitor arcu
-														commodo id. Suspendisse eget felis congue, aliquet
-														velit ut, lacinia risus. Quisque ac nisl at nunc
-														fringilla hendrerit quis sed justo. Curabitur urna
-														eros, iaculis in lacinia quis, ultricies at nunc.
-														Sed ac malesuada eros. Suspendisse at metus
-														malesuada, varius lectus ac, semper massa.
-													</p>
+											<h1 style={{ lineHeight: 1.25 }}>
+												<span className="header-text">
+													An app to bring the
+												</span>
+											</h1>
+											<h1 style={{ lineHeight: 1.25}}>
+												<span className="header-text">farmers market from</span>
+											</h1>
+											<h1 style={{ lineHeight: 1.25}}>
+												<span className="header-text-red">phone to table</span>
+											</h1>
+												<div className="wrap-mobile">
+												<ul className="list-main-mobile">
+												<li>Discover the best local producers of meat, seafood, produce, wine, cheese and more
+													</li>
+													<li>Choose a pick up time and location that works around your schedule
+													</li>
+													<li>Preorder to avoid the rush and guarantee your favorite things are waiting for you</li>
+													<li>Connect to the awesome people who make your awesome food
+													</li>
+												</ul>
 												</div>
 											</div>
 											<div className="sign-up-mobile">
@@ -753,26 +743,26 @@ class App extends Component {
 									>
 										<div className="left-slant" />
 										<div className="left-column">
-											<h1>
-												<span className="header-text">Farmers markets </span>
-											</h1>
-											<h1>
-												<span className="header-text">in your pocket </span>
-											</h1>
+										<h1 style={{ lineHeight: 1.25 }}>
+											<span className="header-text">
+												Your key to the best
+											</span>
+										</h1>
+										<h1 style={{ lineHeight: 1.25}}>
+											<span className="header-text">farmers market experience</span>
+										</h1>
 											<div className="wrap">
-												<p>
-													Lorem ipsum dolor sit amet, consectetur adipiscing
-													elit. Sed ultricies ex urna, vel porttitor arcu
-													commodo id. Suspendisse eget felis congue, aliquet
-													velit ut, lacinia risus. Quisque ac nisl at nunc
-													fringilla hendrerit quis sed justo. Curabitur urna
-													eros, iaculis in lacinia quis, ultricies at nunc. Sed
-													ac malesuada eros. Suspendisse at metus malesuada,
-													varius lectus ac, semper massa.
-												</p>
+											<ul className="list-main">
+											<li>Discover the best local producers of meat, seafood, produce, wine, cheese and more
+												</li>
+												<li>Choose a pick up time and location that works around your schedule
+												</li>
+												<li>Preorder to avoid the rush and guarantee your favorite things are waiting for you</li>
+												<li>Connect to the awesome people who make your awesome food
+												</li>
+																							</ul>
 											</div>
 										</div>
-
 										<div className="phone">
 											<img
 												src={require("./assets/phone@2x.png")}
@@ -923,10 +913,7 @@ class App extends Component {
 										<Col>
 											<img
 												src={require("./assets/homephone.png")}
-												style={{
-													width: homeimgSize + "%",
-													height: homeimgSize + "%"
-												}}
+
 											/>
 										</Col>
 										<Col>
@@ -952,28 +939,24 @@ class App extends Component {
 									>
 										<div className="left-slant" />
 										<div className="left-column">
-											<h1 style={{ lineHeight: 1.25 }}>
-												<span className="header-text">
-													App to bring farmers{" "}
-												</span>
-											</h1>
-											<h1 style={{ lineHeight: 1.25 }}>
-												<span className="header-text">market produce from</span>
-											</h1>
-											<h1 style={{ lineHeight: 1.25 }}>
-												<span className="header-text-red">phone to table</span>
-											</h1>
+										<h1 style={{ lineHeight: 1.25 }}>
+											<span className="header-text">
+												Your key to the best
+											</span>
+										</h1>
+										<h1 style={{ lineHeight: 1.25}}>
+											<span className="header-text">farmers market experience</span>
+										</h1>
 											<div className="wrap">
-												<p>
-													Lorem ipsum dolor sit amet, consectetur adipiscing
-													elit. Sed ultricies ex urna, vel porttitor arcu
-													commodo id. Suspendisse eget felis congue, aliquet
-													velit ut, lacinia risus. Quisque ac nisl at nunc
-													fringilla hendrerit quis sed justo. Curabitur urna
-													eros, iaculis in lacinia quis, ultricies at nunc. Sed
-													ac malesuada eros. Suspendisse at metus malesuada,
-													varius lectus ac, semper massa.
-												</p>
+												<ul className="list-main">
+												<li>Discover the best local producers of meat, seafood, produce, wine, cheese and more
+													</li>
+													<li>Choose a pick up time and location that works around your schedule
+													</li>
+													<li>Preorder to avoid anthe rush and guarantee your favorite things are waiting for you</li>
+													<li>Connect to the awesome people who make your awesome food
+													</li>
+												</ul>
 											</div>
 										</div>
 
@@ -1153,27 +1136,24 @@ class App extends Component {
 										>
 											<div className="left-slant-mobile" />
 											<div className="left-column-mobile">
-												<h1>
-													<span className="header-text-mobile">
-														Farmers markets{" "}
-													</span>
-												</h1>
-												<h1>
-													<span className="header-text-mobile">
-														in your pocket{" "}
-													</span>
-												</h1>
+											<h1 style={{ lineHeight: 1.25 }}>
+												<span className="header-text">
+													Your key to the best
+												</span>
+											</h1>
+											<h1 style={{ lineHeight: 1.25}}>
+												<span className="header-text">farmers market experience</span>
+											</h1>
 												<div className="wrap">
-													<p style={{ fontSize: 10 }}>
-														Lorem ipsum dolor sit amet, consectetur adipiscing
-														elit. Sed ultricies ex urna, vel porttitor arcu
-														commodo id. Suspendisse eget felis congue, aliquet
-														velit ut, lacinia risus. Quisque ac nisl at nunc
-														fringilla hendrerit quis sed justo. Curabitur urna
-														eros, iaculis in lacinia quis, ultricies at nunc.
-														Sed ac malesuada eros. Suspendisse at metus
-														malesuada, varius lectus ac, semper massa.
-													</p>
+												<ul className="list-main">
+																					<li>Discover the best local producers of meat, seafood, produce, wine, cheese and more
+											</li>
+											<li>Choose a pick up time and location that works around your schedule
+											</li>
+											<li>Preorder to avoid the rush and guarantee your favorite things are waiting for you</li>
+											<li>Connect to the awesome people who make your awesome food
+											</li>
+												</ul>
 												</div>
 											</div>
 											<div className="sign-up-mobile">

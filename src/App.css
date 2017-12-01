@@ -1,6 +1,8 @@
 @import "~antd/dist/antd.css";
 @import url("https://fonts.googleapis.com/css?family=PT+Sans:400,700");
 
+html { font-size: 16px }
+
 .App {
 	text-align: center;
 	display: flex;
@@ -9,7 +11,7 @@
 
 .element {
 	height: 100vh;
-	padding-top: 30px;
+	padding-top: 10px;
 }
 
 .bottom-element {
@@ -62,9 +64,20 @@
 	padding-top: 15%;
 	white-space: normal;
 	overflow: visible;
+	width: 125%;
+
 }
+
+.wrap-mobile {
+	padding-top: 15%;
+	white-space: normal;
+	overflow: visible;
+	width: 160%;
+
+}
+
 .wrap p {
-	font-size: 16px;
+	font-size: calc(100% + 0.5vw);
 	color: black;
 }
 .left-slant {
@@ -90,7 +103,7 @@
 
 .header-text {
 	font-family: "PT Sans", sans-serif;
-	font-size: 50px;
+	font-size: calc(100% + 2vw);
 	background-color: black;
 	color: #ffffff;
 	padding-left: 20px;
@@ -99,7 +112,7 @@
 
 .header-text-red {
 	font-family: "PT Sans", sans-serif;
-	font-size: 50px;
+	font-size: calc(100% + 2vw);
 	background-color: #cc055f;
 	color: #ffffff;
 	padding-left: 20px;
@@ -181,9 +194,38 @@ h1 {
 
 .header-text-mobile {
 	font-family: "PT Sans", sans-serif;
-	font-size: 30px;
+	font-size: calc(112.5% + 0.5vw);
 	background-color: black;
 	color: #ffffff;
 	padding-left: 20px;
 	padding-right: 20px;
+}
+
+.header-text-mobile-red {
+	font-family: "PT Sans", sans-serif;
+	font-size: calc(112.5% + 0.5vw);
+	background-color: #cc055f;
+	color: #ffffff;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.list-main {
+
+list-style-position: initial;
+font-size: calc(100% + 0.25vw);
+}
+
+.list-main-mobile {
+
+list-style-position: initial;
+font-size: .8em;
+
+}
+
+li
+{
+margin: 1em 0;
+background: url('assets/food.resized.png') no-repeat  0px 0px transparent;
+padding: 0px 0px 1px 24px;
 }
