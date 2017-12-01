@@ -950,7 +950,7 @@ class App extends Component {
 													</li>
 													<li>Choose a pick up time and location that works around your schedule
 													</li>
-													<li>Preorder to avoid anthe rush and guarantee your favorite things are waiting for you</li>
+													<li>Preorder to avoid the rush and guarantee your favorite things are waiting for you</li>
 													<li>Connect to the awesome people who make your awesome food
 													</li>
 												</ul>
